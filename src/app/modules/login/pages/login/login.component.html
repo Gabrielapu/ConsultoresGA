@@ -1,0 +1,30 @@
+<div class="containe text-center align-content-center">
+  <div class="form-signin">
+    <img
+      class="mb-4"
+      src="../../../../../assets/img/login.png"
+      width="72"
+      height="72"
+    />
+    <h1 class="h3 mb-3 font-weight-normal">Ingresar</h1>
+      <form [formGroup]="loginForm">
+        <input
+          class="form-control mb-2"
+          formControlName="email"
+          type="email"
+          placeholder="Correo"
+          required
+          autofocus
+        />
+
+        <input
+          class="form-control mb-2"
+          formControlName="password"
+          type="password"
+          placeholder="Contraseña"
+          required
+        />
+      </form>
+      <button class="btn btn-success" (click)="login()">Ingresar</button>
+  </div>
+</div>

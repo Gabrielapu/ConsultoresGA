@@ -1,0 +1,48 @@
+<div class="container-lg">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <h2>Empresas</h2>
+                    </div>
+                    <div class="col-sm-4">
+                        <button (click)="onAdd()" type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i>
+                            Agregar</button>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Sub gerente</th>
+                        <th>Jefe de seguridad</th>
+                        <th>Jefe prevención de riesgos</th>
+                        <th>Tamaño</th>
+                        <th>Cliente asociado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let enterprise of enterprises">
+                        <td *ngFor="let field of fields" contenteditable="true" (click)="onClick($event)"
+                            (blur)="onEdit(enterprise, field, $event)">{{enterprise[field]}}</td>
+                        <td>
+                            <div class="form-group">
+                                <select class="form-control" (click)="onClick2($event)"
+                                    (blur)="onEdit2(enterprise, 'accountId', $event)">
+                                    <option *ngFor="let user of users" [value]="user.id">{{user.name}}</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td>
+                            <a (click)="onDelete(enterprise.id)" class="delete" title="Delete" data-toggle="tooltip"><i
+                                    class="material-icons">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

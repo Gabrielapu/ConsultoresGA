@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand">Consultores GA</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="role === 'Administrador'" routerLinkActive="active" routerLink="users" >Usuarios</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="role === 'Administrador' || role === 'Auditor' " routerLinkActive="active" routerLink="enterprises" >Empresas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="role === 'Administrador' || role === 'Auditor' " routerLinkActive="active" routerLink="security-enterprises" >Empresas de Seguridad</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="role === 'Administrador' || role === 'Auditor' " routerLinkActive="active" routerLink="audit" >Auditorias</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="role === 'Administrador' || role === 'Auditor' || role === 'Cliente'" routerLinkActive="active" routerLink="summary" >Resumen</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <button (click)="logout()" class="btn btn-outline-danger my-2 my-sm-0" type="button">Salir</button>
+      </form>
+    </div>
+  </nav>

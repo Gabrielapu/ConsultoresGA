@@ -1,0 +1,61 @@
+<div class="container" style="text-align: center;">
+  <div class="col-12">
+    <h1 class="mt-3"> Nueva encuesta </h1>
+
+    <mat-horizontal-stepper linear #stepper>
+
+      <!-- First Step -->
+      <mat-step #matStep1>
+        <ng-template matStepLabel>Datos Empresa</ng-template>
+        <app-step-one (form1)="matStep1.stepControl = $event; getEnterpriseId($event)"></app-step-one>
+      </mat-step>
+
+      <!-- Second Step -->
+      <mat-step #matStep2>
+        <ng-template matStepLabel>Datos E. Seguridad</ng-template>
+        <app-step-two (form2)="matStep2.stepControl = $event; getSecurityEnterpriseId($event)"></app-step-two>
+      </mat-step>
+
+      <!-- Third Step -->
+      <mat-step #matStep3>
+        <ng-template matStepLabel>Guardias: Directiva / Observada</ng-template>
+        <table class="example-full-width" cellspacing="0">
+          <thead>
+            <tr>
+              <th style="width: 100px; word-wrap: break-word;"> Turnos </th>
+              <th style="width: 300px; word-wrap: break-word;"> Horario Directiva </th>
+              <th style="width: 300px; word-wrap: break-word;"> Horario Observado </th>
+              <th style="width: 300px; word-wrap: break-word;"> Diferencia </th>
+            </tr>
+          </thead>
+          <tbody>
+            <app-step-three [turno]="'Turno 1'" (form3)="matStep3.stepControl = $event"></app-step-three>
+            <app-step-three [turno]="'Turno 2'" (form3)="matStep3.stepControl = $event"></app-step-three>
+            <app-step-three [turno]="'Turno 3'" (form3)="matStep3.stepControl = $event"></app-step-three>
+          </tbody>
+        </table>
+        <div>
+          <button mat-button matStepperPrevious>Atrás</button>
+          <button mat-button matStepperNext>Siguiente</button>
+        </div>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Preguntas</ng-template>
+        <app-step-four (audit)="getAudit($event)"></app-step-four>
+      </mat-step>
+
+      <!-- Fourth Step -->
+      <mat-step>
+        <ng-template matStepLabel>Completado</ng-template>
+        <p>Encuesta completada</p>
+        <div>
+          <button mat-button matStepperPrevious>Atrás</button>
+          <button mat-button routerLink="/dashboard/summary">Ver Resumen</button>
+        </div>
+      </mat-step>
+
+    </mat-horizontal-stepper>
+
+  </div>
+</div>

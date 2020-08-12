@@ -1,0 +1,45 @@
+<div class="container-lg">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <h2>Empresas de seguridad</h2>
+                    </div>
+                    <div class="col-sm-4">
+                        <button (click)="onAdd()" type="button" class="btn btn-info add-new">
+                            <i class="fa fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Jefe</th>
+                        <th>Fecha I. Serv.</th>
+                        <th>Estructura RRHH</th>
+                        <th>Jefe seguridad</th>
+                        <th>S. Seguridad 1</th>
+                        <th>S. Seguridad 2</th>
+                        <th>S. Seguridad 3</th>
+                        <th>S. Seguridad 4</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let security_enterprise of security_enterprises">
+                        <td *ngFor="let field of fields" contenteditable="true" (click)="onClick($event)" (blur)="onSecurity_Edit(security_enterprise, field, $event)">
+                            {{ security_enterprise[field] }}
+                        </td>
+                        <td>
+                            <a (click)="onSecurity_Delete(security_enterprise.id)" class="delete" title="Delete"
+                                data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

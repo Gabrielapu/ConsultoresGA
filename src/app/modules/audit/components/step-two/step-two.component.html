@@ -1,0 +1,73 @@
+<form [formGroup]="seFormGroup">
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Empresa</mat-label>
+            <mat-select (blur)="emitForm()" formControlName="name">
+              <mat-option (click)="getDataSecurity_Enterprises()"
+                *ngFor="let security_enterprise of security_enterprises" [value]="security_enterprise">
+                {{security_enterprise}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Inicio del servicio</mat-label>
+            <input matInput formControlName="start_service_date">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Estructura RRHH</mat-label>
+            <input matInput formControlName="human_resources_structure">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Jefe</mat-label>
+            <input matInput formControlName="boss">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Supervisor Jefe</mat-label>
+            <input matInput formControlName="security_boss">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Sup. Seguridad 1</mat-label>
+            <input matInput formControlName="security_supervisor_1">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Sup. Seguridad 2</mat-label>
+            <input matInput formControlName="security_supervisor_2">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Sup. Seguridad 3</mat-label>
+            <input matInput formControlName="security_supervisor_3">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Sup. Seguridad 4</mat-label>
+            <input matInput formControlName="security_supervisor_4">
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <div>
+      <button mat-button matStepperPrevious>Atrás</button>
+      <button mat-button matStepperNext>Siguiente</button>
+    </div>
+  </form>

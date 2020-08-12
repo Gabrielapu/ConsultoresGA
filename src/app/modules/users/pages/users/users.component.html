@@ -1,0 +1,66 @@
+<div class="container-lg">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-8"><h2>Empleados</h2></div>
+                    <div class="col-sm-4">
+                        <button (click)="openModal(template)" type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Agregar</button>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Rol</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users">
+                        <td contenteditable="true" (blur)="onEdit(user, 'name', $event)">{{user.name}}</td>
+                        <td contenteditable="true" (blur)="onEdit(user, 'email', $event)">{{user.email}}</td>
+                        <td contenteditable="true" (blur)="onEdit(user, 'role', $event)">{{user.role}}</td>
+                        <td>                           
+                            <a *ngIf="user.role !== 'Administrador'" (click)="onDelete(user.id)" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                        </td>
+                    </tr>    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Agregar nuevo usuario</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="onAdd()" (reset)="onFocus()">
+    <div class="modal-body">
+      
+        <input id="name-input" class="form-control mb-2" formControlName="name" type="text" placeholder="Nombre" required/>
+
+        <input class="form-control mb-2" formControlName="email" type="email" placeholder="Correo" required/>
+  
+        <input class="form-control mb-2" formControlName="password" type="password" placeholder="Contraseña" required/>
+
+        <div class="form-group">
+          <select formControlName="role" class="form-control">
+            <option value="null" disabled>Seleccione un Rol</option>
+            <option value="Administrador">Administrador</option>
+            <option value="Auditor">Auditor</option>
+            <option value="Cliente">Cliente</option>
+          </select>
+        </div>
+     </div>
+     <div class="modal-footer">
+        <button type="submit" class="btn btn-success">Agregar</button>
+        <button type="reset" class="btn btn-info">Limpiar</button>
+     </div>
+     </form>
+  </ng-template>

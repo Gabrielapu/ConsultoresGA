@@ -1,0 +1,45 @@
+<form [formGroup]="enterpriseFormGroup">
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>Empresa</mat-label>
+          <mat-select (blur)="emitForm()" formControlName="name">
+            <mat-option (click)="getDataEnterprises()" *ngFor="let enterprise of enterprises" [value]="enterprise">
+              {{enterprise}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>Sub gerente</mat-label>
+          <input matInput formControlName="assistant_manager">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>Jefe de seguridad</mat-label>
+          <input matInput formControlName="security_boss">
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>Jefe de prevención de riesgo</mat-label>
+          <input matInput formControlName="risk_prevention_boss">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>Tamaño</mat-label>
+          <input matInput formControlName="size">
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+  <div>
+    <button mat-button matStepperNext>Siguiente</button>
+  </div> 
+</form>

@@ -1,0 +1,28 @@
+<div *ngFor="let section of sections">
+    <h1> {{section.name}} </h1>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 300px;">Pregunta</th>
+          <th style="width: 180px; word-wrap: break-word; table-layout: fixed;">Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let question of section.questions; let i = index">
+          <th style="text-align: left; font-weight: lighter;">
+            <label>{{i+1}}.- {{question.name}}</label>
+          </th>
+          <th style="font-weight: lighter;">
+            <input type="radio" name="{{question.id}}" value="si" (click)="selectedAnswer('si', question, question.answers[0])"> Si
+            <input type="radio" name="{{question.id}}" value="no" (click)="selectedAnswer('no', question, question.answers[1])"> No
+            <input type="radio" name="{{question.id}}" value="na" (click)="selectedAnswer('na', question, question.answers[2])"> N/A
+          </th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <button mat-button (click)="calculateScore()" matStepperPrevious>Atrás</button>
+    <button mat-button (click)="saveChanges()"> Guardar cambios </button>
+    <button mat-button (click)="calculateScore()" matStepperNext>Siguiente</button>
+  </div>
