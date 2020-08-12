@@ -16,6 +16,8 @@ export class AuditComponent implements OnInit {
   security_enterpriseId;
   userId;
   questions = [];
+  currentScore;
+  maxScore;
 
   constructor(private auditService: AuditService) { }
 
@@ -67,7 +69,7 @@ export class AuditComponent implements OnInit {
         })
       })
     })
-    console.log(this.questions);
+    console.log(this.currentScore, this.maxScore);
   }
 
 }

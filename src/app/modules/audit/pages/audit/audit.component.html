@@ -42,7 +42,7 @@
 
       <mat-step>
         <ng-template matStepLabel>Preguntas</ng-template>
-        <app-step-four (audit)="getAudit($event)"></app-step-four>
+        <app-step-four (audit)="getAudit($event)" (scoreEmit)="currentScore = $event" (maxEmit)="maxScore = $event"></app-step-four>
       </mat-step>
 
       <!-- Fourth Step -->

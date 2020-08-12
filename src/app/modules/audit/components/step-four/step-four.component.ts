@@ -3,6 +3,7 @@ import { AuditService } from 'src/app/core/services/audit.service';
 import { Section } from 'src/app/shared/models/section';
 import { Question } from 'src/app/shared/models/question';
 import { Answer } from 'src/app/shared/models/answer';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-step-four',
@@ -15,6 +16,8 @@ export class StepFourComponent implements OnInit {
   score: number = 0;
   max: number = 0;
   @Output() audit = new EventEmitter();
+  @Output() scoreEmit = new EventEmitter();
+  @Output() maxEmit = new EventEmitter();
 
   constructor(private auditService: AuditService) { }
 
@@ -26,20 +29,24 @@ export class StepFourComponent implements OnInit {
     // Solo aplica a cada pregunta
     question.answers.forEach(answer => answer.isSelected = false);
     answer.isSelected = true;
-    question.answers.forEach(answer => {
-      if(answer.isSelected && value !== 'na') {
-        this.max += answer.score;
-      }
-    })
+    // question.answers.forEach(answer => {
+    //   if(answer.isSelected && value !== 'na') {
+    //     this.max += answer.score;
+    //   }
+    // })
   }
 
   calculateScore() {
     this.score = 0;
+    this.max = 0;
     this.sections.forEach(section => {
       section.questions.forEach(question => {
         question.answers.forEach(answer => {
           if(answer.isSelected) {
-            this.score += Math.round(answer.score);
+            this.score += answer.score;
+          }
+          if(answer.isSelected && answer.id !== 3){
+            this.max += answer.score;
           }
         });
       });
@@ -48,6 +55,8 @@ export class StepFourComponent implements OnInit {
 
   saveChanges() {
     this.calculateScore();
+    this.scoreEmit.emit(this.score);
+    this.maxEmit.emit(this.max);
     this.audit.emit(this.sections);
   }
 }
