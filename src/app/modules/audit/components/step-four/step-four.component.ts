@@ -36,12 +36,14 @@ export class StepFourComponent implements OnInit {
     this.max = 0;
     this.sections.forEach(section => {
       section.questions.forEach(question => {
+
+        if(!question.answers[2].isSelected && question.answers[0].isSelected || question.answers[1].isSelected) {
+          this.max += question.answers[0].score;
+        }
+
         question.answers.forEach(answer => {
           if(answer.isSelected) {
             this.score += answer.score;
-          }
-          if(answer.isSelected && answer.name !== 'N/A' && answer.score > 0) {
-            this.max += answer.score;
           }
         });
       });
