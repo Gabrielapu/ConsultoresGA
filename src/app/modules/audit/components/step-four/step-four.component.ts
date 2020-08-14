@@ -29,11 +29,6 @@ export class StepFourComponent implements OnInit {
     // Solo aplica a cada pregunta
     question.answers.forEach(answer => answer.isSelected = false);
     answer.isSelected = true;
-    // question.answers.forEach(answer => {
-    //   if(answer.isSelected && value !== 'na') {
-    //     this.max += answer.score;
-    //   }
-    // })
   }
 
   calculateScore() {
@@ -45,7 +40,7 @@ export class StepFourComponent implements OnInit {
           if(answer.isSelected) {
             this.score += answer.score;
           }
-          if(answer.isSelected && answer.id !== 3){
+          if(answer.isSelected && answer.name !== 'N/A' && answer.score > 0) {
             this.max += answer.score;
           }
         });
