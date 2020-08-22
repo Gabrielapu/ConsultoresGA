@@ -3,7 +3,7 @@
     <tr>
       <td>
         <mat-form-field class="example-full-width">
-          <mat-label>Empresa</mat-label>
+          <mat-label>Empresas</mat-label>
           <mat-select (blur)="emitForm()" formControlName="name">
             <mat-option (click)="getDataEnterprises()" *ngFor="let enterprise of enterprises" [value]="enterprise">
               {{enterprise}}

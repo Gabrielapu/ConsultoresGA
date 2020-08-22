@@ -1,45 +1,45 @@
 <form [formGroup]="guardFormGroup" class="example-form">
-  <table>
-    <tr>
-      <td style="width: 100px; word-wrap: break-word; table-layout: fixed;">
-        <p>{{turno}}</p>
-      </td>
-      <td style="width: 310px; word-wrap: break-word; table-layout: fixed;">
-        <div class="inline">
-          <mat-form-field appearance="fill" class="input_time">
-            <mat-label>Hora inicio</mat-label>
-            <input matInput type="time" formControlName="inicioDir" (blur)="getdifference()">
-          </mat-form-field>
-          <p class="m-3">a</p>
-          <mat-form-field appearance="fill" class="input_time">
-            <mat-label>Hora fin</mat-label>
-            <input matInput type="time" formControlName="finDir" (blur)="getdifference()">
-          </mat-form-field>
-        </div>
-      </td>
-      <td style="width: 330px; word-wrap: break-word; table-layout: fixed;">
-        <div class="inline">
-          <mat-form-field appearance="fill" class="input_time">
-            <mat-label>Hora inicio</mat-label>
-            <input matInput type="time" formControlName="inicioObs" (blur)="getdifference()">
-          </mat-form-field>
-          <p class="m-3">a</p>
-          <mat-form-field appearance="fill" class="input_time">
-            <mat-label>Hora fin</mat-label>
-            <input matInput type="time" formControlName="finObs" (blur)="getdifference()">
-          </mat-form-field>
-        </div>
-      </td>
-      <td style="width: 340px; word-wrap: break-word; display: flex;">
-        <mat-form-field class="m-2" style="width:140px">
-          <mat-label>Hora inicio</mat-label>
-          <input matInput disabled [value]="startDelay" class="delay">
-        </mat-form-field>
-        <mat-form-field class="m-2" style="width:170px">
-          <mat-label>Hora Fin</mat-label>
-          <input matInput disabled [value]="endDelay" class="delay">
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
+    <table>
+        <tr>
+            <td style="width: 100px; word-wrap: break-word; table-layout: fixed;">
+                <p>{{turno}}</p>
+            </td>
+            <td style="width: 310px; word-wrap: break-word; table-layout: fixed;">
+                <div class="inline">
+                    <mat-form-field appearance="fill" class="input_time">
+                        <mat-label>Hora inicio</mat-label>
+                        <input matInput type="time" formControlName="inicioDir" (blur)="getDifference()">
+                    </mat-form-field>
+                    <p class="m-3">a</p>
+                    <mat-form-field appearance="fill" class="input_time">
+                        <mat-label>Hora fin</mat-label>
+                        <input matInput type="time" formControlName="finDir" (blur)="getDifference()">
+                    </mat-form-field>
+                </div>
+            </td>
+            <td style="width: 330px; word-wrap: break-word; table-layout: fixed;">
+                <div class="inline">
+                    <mat-form-field appearance="fill" class="input_time">
+                        <mat-label>Hora inicio</mat-label>
+                        <input matInput type="time" formControlName="inicioObs" (blur)="getDifference()">
+                    </mat-form-field>
+                    <p class="m-3">a</p>
+                    <mat-form-field appearance="fill" class="input_time">
+                        <mat-label>Hora fin</mat-label>
+                        <input matInput type="time" formControlName="finObs" (blur)="getDifference()">
+                    </mat-form-field>
+                </div>
+            </td>
+            <td style="width: 340px; word-wrap: break-word; display: flex;">
+                <mat-form-field class="m-2" style="width:140px">
+                    <mat-label>Hora inicio</mat-label>
+                    <input matInput disabled [value]="startDelay" class="delay">
+                </mat-form-field>
+                <mat-form-field class="m-2" style="width:170px">
+                    <mat-label>Hora Fin</mat-label>
+                    <input matInput disabled [value]="endDelay" class="delay">
+                </mat-form-field>
+            </td>
+        </tr>
+    </table>
 </form>

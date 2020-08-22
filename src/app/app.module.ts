@@ -12,9 +12,10 @@ import { AppComponent } from './app.component';
 // Services
 import { AuthService } from './core/authentication/auth.service';
 
-import { environment } from '../environments/environment';
+
 import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { environment } from 'src/environments/environment.hmr';
 
 @NgModule({
   declarations: [

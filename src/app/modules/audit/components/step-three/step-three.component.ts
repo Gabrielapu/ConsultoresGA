@@ -28,7 +28,7 @@ export class StepThreeComponent implements OnInit {
     this.form3.emit(this.guardFormGroup);
   }
 
-  getdifference() {
+  getDifference() {
     if (this.guardFormGroup.valid) {
       const inicioDir = this.guardFormGroup.get('inicioDir').value;
       const finDir = this.guardFormGroup.get('finDir').value;
@@ -54,10 +54,8 @@ export class StepThreeComponent implements OnInit {
     }
   }
 
-  parseTime(s) {
-    const c = s.split(':');
+  parseTime(hora) {
+    const c = hora.split(':');
     return parseInt(c[0]) * 60 + parseInt(c[1]);
-
   }
-
 }

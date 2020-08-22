@@ -15,7 +15,7 @@ export class StepOneComponent implements OnInit {
   enterprises = [];
 
   constructor(private _formBuilder: FormBuilder,
-    private auditService: AuditService) { 
+    private auditService: AuditService) {
     this.enterpriseFormGroup = this._formBuilder.group({
       name: [''],
       assistant_manager: [''],
@@ -26,6 +26,7 @@ export class StepOneComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log('holaaaa');
     this.getEnterprises();
   }
 
