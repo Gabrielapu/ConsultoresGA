@@ -29,9 +29,15 @@
             </tr>
           </thead>
           <tbody>
-            <app-step-three [turno]="'Turno 1'" (form3)="matStep3.stepControl = $event"></app-step-three>
-            <app-step-three [turno]="'Turno 2'" (form3)="matStep3.stepControl = $event"></app-step-three>
-            <app-step-three [turno]="'Turno 3'" (form3)="matStep3.stepControl = $event"></app-step-three>
+            <app-step-three [turno]="'Turno 1'" (form3)="matStep3.stepControl = $event"
+              (DiffHoraInicio)="agregarHorarios(0, $event, null)" (DiffHoraFin)="agregarHorarios(0, null, $event)">
+            </app-step-three>
+            <app-step-three [turno]="'Turno 2'" (form3)="matStep3.stepControl = $event"
+              (DiffHoraInicio)="agregarHorarios(1, $event, null)" (DiffHoraFin)="agregarHorarios(1, null, $event)">
+            </app-step-three>
+            <app-step-three [turno]="'Turno 3'" (form3)="matStep3.stepControl = $event"
+              (DiffHoraInicio)="agregarHorarios(2, $event, null)" (DiffHoraFin)="agregarHorarios(2, null, $event)">
+            </app-step-three>
           </tbody>
         </table>
         <div>
@@ -42,7 +48,8 @@
 
       <mat-step>
         <ng-template matStepLabel>Preguntas</ng-template>
-        <app-step-four (audit)="getAudit($event)" (scoreEmit)="currentScore = $event" (maxEmit)="maxScore = $event"></app-step-four>
+        <app-step-four (audit)="getAudit($event)" (scoreEmit)="currentScore = $event" (maxEmit)="maxScore = $event">
+        </app-step-four>
       </mat-step>
 
       <!-- Fourth Step -->

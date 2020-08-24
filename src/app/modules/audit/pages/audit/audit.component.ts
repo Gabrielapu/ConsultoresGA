@@ -12,17 +12,46 @@ import { Answer } from 'src/app/shared/models/answer';
 })
 export class AuditComponent implements OnInit {
 
+
   enterpriseId;
   security_enterpriseId;
   userId;
   questions = [];
   currentScore;
   maxScore;
+  dHoraInicio;
+  dHoraFin;
+  horarios: any[];
 
-  constructor(private auditService: AuditService) { }
+  constructor(private auditService: AuditService) {
+    this.horarios = [
+      {
+        horaInicio: null,
+        horaFin: null
+      },
+      {
+        horaInicio: null,
+        horaFin: null
+      },
+      {
+        horaInicio: null,
+        horaFin: null
+      }
+    ]
+  }
 
-  ngOnInit(): void { 
-    //this.auditService.getAudits().subscribe(console.log)
+  ngOnInit(): void {
+  }
+
+  agregarHorarios(index: number, horaInicio: number, horaFin: number) {
+    if (horaInicio) {
+      this.horarios[index].horaInicio = horaInicio;
+      console.table(this.horarios);
+    }
+    if (horaFin) {
+      this.horarios[index].horaFin = horaFin;
+      console.table(this.horarios);
+    }
   }
 
   getEnterpriseId(form1: FormGroup) {
@@ -32,8 +61,8 @@ export class AuditComponent implements OnInit {
         const data = enterpriseData.payload.doc.data()
         const nameEnterprise = form1.get('name').value;
         const riskPB = form1.get('risk_prevention_boss').value;
-        
-        if(data.name === nameEnterprise && data.risk_prevention_boss === riskPB) {
+
+        if (data.name === nameEnterprise && data.risk_prevention_boss === riskPB) {
           this.enterpriseId = id;
           this.userId = data.accountId;
         }
@@ -48,8 +77,8 @@ export class AuditComponent implements OnInit {
         const data = seData.payload.doc.data()
         const nameSEnterprise = form2.get('name').value;
         const startDate = form2.get('start_service_date').value;
-        
-        if(data.name === nameSEnterprise && data.start_service_date === startDate) {
+
+        if (data.name === nameSEnterprise && data.start_service_date === startDate) {
           this.security_enterpriseId = id;
         }
       })
@@ -62,9 +91,9 @@ export class AuditComponent implements OnInit {
       section.questions.forEach((question: Question) => {
         const id = question.id;
         question.answers.forEach((answer: Answer) => {
-          if(answer.isSelected === true) {
+          if (answer.isSelected === true) {
             const answerId = answer.id;
-            this.questions.push({id, answerId})
+            this.questions.push({ id, answerId })
           }
         })
       })

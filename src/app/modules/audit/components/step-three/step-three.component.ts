@@ -11,8 +11,12 @@ export class StepThreeComponent implements OnInit {
   startDelay = '';
   endDelay = '';
   guardFormGroup: FormGroup;
+  
+  @Output() DiffHoraInicio = new EventEmitter();
+  @Output() DiffHoraFin = new EventEmitter<number>();
   @Output() form3 = new EventEmitter();
   @Input() turno = '';
+
 
   constructor(private _formBuilder: FormBuilder) {
 
@@ -39,17 +43,21 @@ export class StepThreeComponent implements OnInit {
       const diffFin = this.parseTime(finDir) - this.parseTime(finObs);
 
       if (diffInicio > 0) {
-        this.startDelay = `Llegada ${diffInicio} min. antes.`
+        this.startDelay = `Llegada ${diffInicio} min. antes.`;
+        this.DiffHoraInicio.emit(diffInicio);
       } else {
         const time = Math.abs(diffInicio);
-        this.startDelay = `Atraso: ${time} min.`
+        this.startDelay = `Atraso: ${time} min.`;
+        this.DiffHoraInicio.emit(diffInicio);
       }
 
       if (diffFin < 0) {
         const time = Math.abs(diffFin);
-        this.endDelay = `Salida ${time} min. después.`
+        this.endDelay = `Salida ${time} min. después.`;
+        this.DiffHoraFin.emit(diffFin);
       } else {
-        this.endDelay = `Salida: ${diffFin} min. antes`
+        this.endDelay = `Salida: ${diffFin} min. antes`;
+        this.DiffHoraFin.emit(diffFin);
       }
     }
   }

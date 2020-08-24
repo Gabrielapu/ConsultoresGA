@@ -26,7 +26,6 @@ export class StepOneComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('holaaaa');
     this.getEnterprises();
   }
 
