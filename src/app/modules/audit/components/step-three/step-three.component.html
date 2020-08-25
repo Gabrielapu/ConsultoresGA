@@ -1,10 +1,10 @@
 <form [formGroup]="guardFormGroup" class="example-form">
     <table>
         <tr>
-            <td style="width: 100px; word-wrap: break-word; table-layout: fixed;">
+            <td class="turno">
                 <p>{{turno}}</p>
             </td>
-            <td style="width: 310px; word-wrap: break-word; table-layout: fixed;">
+            <td class="directiva">
                 <div class="inline">
                     <mat-form-field appearance="fill" class="input_time">
                         <mat-label>Hora inicio</mat-label>
@@ -17,7 +17,7 @@
                     </mat-form-field>
                 </div>
             </td>
-            <td style="width: 330px; word-wrap: break-word; table-layout: fixed;">
+            <td class="observada">
                 <div class="inline">
                     <mat-form-field appearance="fill" class="input_time">
                         <mat-label>Hora inicio</mat-label>
@@ -30,7 +30,7 @@
                     </mat-form-field>
                 </div>
             </td>
-            <td style="width: 340px; word-wrap: break-word; display: flex;">
+            <td class="diferencia">
                 <mat-form-field class="m-2" style="width:140px">
                     <mat-label>Hora inicio</mat-label>
                     <input matInput disabled [value]="startDelay" class="delay">

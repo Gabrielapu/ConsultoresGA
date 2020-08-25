@@ -1,8 +1,8 @@
 <form [formGroup]="enterpriseFormGroup">
-  <table class="example-full-width" cellspacing="0">
+  <table class="table table-responsive table-borderless">
     <tr>
       <td>
-        <mat-form-field class="example-full-width">
+        <mat-form-field>
           <mat-label>Empresas</mat-label>
           <mat-select (blur)="emitForm()" formControlName="name">
             <mat-option (click)="getDataEnterprises()" *ngFor="let enterprise of enterprises" [value]="enterprise">
@@ -12,13 +12,13 @@
         </mat-form-field>
       </td>
       <td>
-        <mat-form-field class="example-full-width">
+        <mat-form-field>
           <mat-label>Sub gerente</mat-label>
           <input matInput formControlName="assistant_manager">
         </mat-form-field>
       </td>
       <td>
-        <mat-form-field class="example-full-width">
+        <mat-form-field>
           <mat-label>Jefe de seguridad</mat-label>
           <input matInput formControlName="security_boss">
         </mat-form-field>
@@ -26,13 +26,13 @@
     </tr>
     <tr>
       <td>
-        <mat-form-field class="example-full-width">
+        <mat-form-field>
           <mat-label>Jefe de prevención de riesgo</mat-label>
           <input matInput formControlName="risk_prevention_boss">
         </mat-form-field>
       </td>
       <td>
-        <mat-form-field class="example-full-width">
+        <mat-form-field>
           <mat-label>Tamaño</mat-label>
           <input matInput formControlName="size">
         </mat-form-field>
@@ -41,5 +41,5 @@
   </table>
   <div>
     <button mat-button matStepperNext>Siguiente</button>
-  </div> 
+  </div>
 </form>
